@@ -1,4 +1,4 @@
-const API_KEY = "yEztbMI19Uh8O38BKDZyQipyF0O0AWhtdwqCjYOX";
+const API_KEY = "YOUR_COHERE_API_KEY";
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg.type === "cohere_query") {
