@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "msnChoice",
+  "version": "1.0",
+  "description": "Detects selected questions on any site, sends them to Cohere AI, and displays the answer.",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}

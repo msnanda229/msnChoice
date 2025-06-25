@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MCQ Assistant</title>
+  <style>
+    body { font-family: sans-serif; padding: 16px; }
+    button { margin-top: 10px; padding: 8px 12px; margin-right: 8px; }
+    .entry { border-bottom: 1px solid #ccc; margin: 10px 0; padding: 8px 0; }
+    .q { font-weight: bold; }
+    #history { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2>MCQ Assistant</h2>
+  <p>Select a question with options (A, B, C, D) on any website and get answers instantly using AI.</p>
+
+  <button id="view-history">📚 View History</button>
+  <button id="clear-history">🧹 Clear History</button>
+
+  <div id="history"></div>
+
+  <script>
+    const historyDiv = document.getElementById("history");
+
+    document.getElementById("view-history").onclick = () => {
+      chrome.storage.local.get(["history"], (res) => {
+        const history = res.history || [];
+        historyDiv.innerHTML = history.length
+          ? history.reverse().map(entry => `
+              <div class="entry">
+                <div class="q">${entry.question}</div>
+                <div class="a">➡️ ${entry.answer}</div>
+                <div style="font-size: small; color: gray;">${new Date(entry.timestamp).toLocaleString()}</div>
+              </div>
+            `).join("")
+          : "<p>No history yet.</p>";
+      });
+    };
+
+    document.getElementById("clear-history").onclick = () => {
+      chrome.storage.local.remove("history", () => {
+        historyDiv.innerHTML = "<p>✅ History cleared.</p>";
+      });
+    };
+  </script>
+</body>
+</html>

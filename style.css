@@ -1,0 +1,41 @@
+#ai-answer-box {
+  position: fixed;
+  top: 100px;
+  left: 100px;
+  width: 350px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: sans-serif;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 999999;
+}
+
+.ai-header {
+  background: #f0f0f0;
+  padding: 10px;
+  font-weight: bold;
+  cursor: move;
+  border-bottom: 1px solid #ddd;
+}
+
+.ai-body {
+  padding: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.ai-close {
+  float: right;
+  cursor: pointer;
+}
+
+.option {
+  padding: 6px;
+  margin-bottom: 4px;
+}
+
+.option.correct {
+  background: #e6ffe6;
+  border-left: 4px solid green;
+}
